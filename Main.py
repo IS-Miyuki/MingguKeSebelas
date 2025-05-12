@@ -18,16 +18,18 @@ def Latihan2(x,y):
 Latihan2(list1,list2)
 
 file = 'MingguKeSebelas/mbox-short.txt'
-def Latihan3(file):
+def Latihan3(files):
     try:
-        fh = open(file)
+        with open(files) as file:
+            file = file.read()
+            file = file.split()
     except FileNotFoundError:
-        print(f"File {file} tidak ditemukan")
-        return
+        return print(f"File {file} tidak ditemukan")
+        
     
     email_count = {}
     
-    for line in fh:
+    for line in file:
         if line.startswith('From '):
             # Split the line and get the sender's email (second element)
             words = line.split()
@@ -51,14 +53,16 @@ Latihan3(file)
 def Latihan4():
     file = input("Masukkan nama file: ")
     try:
-        fh = open(file)
+        with open(file) as file:
+            file = file.read()
+            file = file.split()
     except FileNotFoundError:
         print(f"File {file} tidak ditemukan")
         return
     
     domain_count = {}
     
-    for line in fh:
+    for line in file:
         if line.startswith('From '):
             # Split the line and get the sender's email
             words = line.split()
@@ -80,5 +84,5 @@ def Latihan4():
     print(output)
 
 # Menjalankan Latihan 11.4
-Latihan4(file)
+Latihan4()
 
