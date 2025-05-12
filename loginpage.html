@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT - Sign In</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Söhne:wght@400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Söhne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f8;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #353740;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 32px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-header h1 {
+            color: #202123;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .login-header p {
+            font-size: 16px;
+            color: #6e6e80;
+            line-height: 1.5;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d9d9e3;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .login-form input:focus {
+            border-color: #10a37f;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+        }
+
+        .login-form input::placeholder {
+            color: #8e8ea0;
+        }
+
+        .login-form .error {
+            color: #d1335b;
+            font-size: 14px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .login-form .form-group.error-state input {
+            border-color: #d1335b;
+        }
+
+        .login-form .form-group.error-state .error {
+            display: block;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #10a37f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-form button:hover {
+            background-color: #0f8c6d;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #6e6e80;
+        }
+
+        .login-footer a {
+            color: #10a37f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .login-footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            padding: 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #6e6e80;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+        }
+
+        .login-divider:before, .login-divider:after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .login-divider span {
+            padding: 0 10px;
+            font-size: 14px;
+            color: #8e8ea0;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-login button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 1px solid #d9d9e3;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .social-login button:hover {
+            background-color: #f7f7f8;
+        }
+
+        .social-login img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <svg class="logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M29.4 6.4C29.4 8.4 28.5 10.1 26.9 11.4C28.7 13 29.7 15.1 29.7 17.5C29.7 21.2 27.5 24.1 24.1 25.2C22.6 28.8 19.3 31 15.8 31C12.3 31 9 28.8 7.5 25.2C4.1 24.1 1.9 21.2 1.9 17.5C1.9 15.1 2.9 13 4.7 11.4C3.1 10.1 2.2 8.4 2.2 6.4C2.2 2.9 4.8 0 8.5 0C10.7 0 12.5 1 13.6 2.6C14.7 2.3 15.3 2.2 15.8 2.2C16.3 2.2 16.9 2.3 18 2.6C19.1 1 20.9 0 23.1 0C26.9 0 29.4 2.9 29.4 6.4ZM8.6 17.5C8.6 20.4 11.1 22.5 14.2 22.5H17.4C20.5 22.5 23 20.4 23 17.5C23 14.6 20.5 12.5 17.4 12.5H14.2C11.1 12.5 8.6 14.6 8.6 17.5Z" fill="#10A37F"/>
+        </svg>
+    </header>
+
+    <main class="main-content">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Welcome back</h1>
+                <p>Log in with your email to continue</p>
+            </div>
+            <div class="social-login">
+                <button>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                </button>
+                <button>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="#1877F2"/>
+                    </svg>
+                </button>
+                <button>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1.75c-5.652 0-10.25 4.598-10.25 10.25s4.598 10.25 10.25 10.25 10.25-4.598 10.25-10.25S17.652 1.75 12 1.75zm4.05 15.136c-.18.25-.58.34-.89.159-2.42-1.479-5.48-1.816-9.079-1-.35.067-.68-.217-.76-.565-.08-.35.21-.68.56-.76 3.93-.9 7.29-.51 10.01 1.129.31.18.4.59.15.889zM17.52 13.29c-.24.33-.69.449-1.02.229-2.771-1.7-6.99-2.2-10.279-1.19-.391.11-.81-.1-.92-.5-.11-.4.1-.81.51-.93 3.751-1.14 8.411-.57 11.631 1.37.33.21.43.67.22 1.02zM17.63 10.35c-3.3-1.97-8.75-2.15-11.899-1.19-.5.15-1.029-.13-1.18-.63-.14-.5.13-1.02.63-1.18 3.63-1.1 9.67-.9 13.49 1.36.45.28.58.85.3 1.31-.27.42-.85.57-1.29.29z" fill="#1DB954"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="login-divider">
+                <span>OR</span>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group" id="emailGroup">
+                    <input type="email" id="email" placeholder="Email address" autocomplete="off">
+                    <div class="error" id="emailError">Please enter a valid email address</div>
+                </div>
+                <div class="form-group" id="passwordGroup">
+                    <input type="password" id="password" placeholder="Password" autocomplete="off">
+                    <div class="error" id="passwordError">Your password must be at least 6 characters</div>
+                </div>
+                <button type="submit">Continue</button>
+            </form>
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+                <p><a href="#">Forgot your password?</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2023 OpenAI</p>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const emailGroup = document.getElementById('emailGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            
+            // Reset previous errors
+            emailGroup.classList.remove('error-state');
+            passwordGroup.classList.remove('error-state');
+            
+            // Email validation
+            if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                emailGroup.classList.add('error-state');
+                isValid = false;
+            }
+            
+            // Password validation
+            if (!password.value || password.value.length < 6) {
+                passwordGroup.classList.add('error-state');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Form is valid, you would normally submit to server here
+                alert('Login successful!');
+                // For demo purposes, reset the form
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html> 
