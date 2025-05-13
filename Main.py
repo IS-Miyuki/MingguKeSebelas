@@ -48,14 +48,12 @@ def Latihan4():
     for line in file:
         if line.startswith('From '):
             words = line.split()
-            if len(words) >= 2:
-                email = words[1]
-                if '@' in email:
-                    domain = email.split('@')[1]
-                    if domain not in domain_count:
-                        domain_count[domain] = 1
-                    else:
-                        domain_count[domain] += 1
+            if '@' in words[1]:
+                domain = words[1].split('@')[1]
+                if domain not in domain_count:
+                    domain_count[domain] = 1
+                else:
+                    domain_count[domain] += 1
     print(domain_count)
 
 Latihan4()
