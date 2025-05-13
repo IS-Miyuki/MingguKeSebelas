@@ -1,11 +1,10 @@
-dictionary = {1:10,2:20,3:30,4:40,5:50,6:60}
-def Latihan1(x):
-    
+def Latihan1():
+    dictionary = {1:10,2:20,3:30,4:40,5:50,6:60}
     print("key\tvalue\titem")
-    for i,j  in enumerate(x):
-        print(f"{j}\t{x[j]}\t{i+1}")
+    for i,j  in enumerate(dictionary):
+        print(f"{j}\t{dictionary[j]}\t{i+1}")
 
-Latihan1(dictionary)
+Latihan1()
 
 list1 = ['red','green','blue']
 list2 = ['#FF0000','#008000','#0000FF']
@@ -17,72 +16,47 @@ def Latihan2(x,y):
 
 Latihan2(list1,list2)
 
-file = 'MingguKeSebelas/mbox-short.txt'
-def Latihan3(files):
+def Latihan3():
+    file = input("Masukkan nama file: ")
     try:
-        with open(files) as file:
-            file = file.read()
-            file = file.split()
+        with open(file) as files:
+            file = (files.read()).splitlines()
     except FileNotFoundError:
         return print(f"File {file} tidak ditemukan")
-        
     
     email_count = {}
-    
     for line in file:
         if line.startswith('From '):
-            # Split the line and get the sender's email (second element)
             words = line.split()
-            if len(words) >= 2:
-                sender = words[1]
-                # Count the occurrences of each email
-                email_count[sender] = email_count.get(sender, 0) + 1
-    
-    # Print dictionary with pretty formatting
-    print("{")
-    for i, (email, count) in enumerate(email_count.items()):
-        if i < len(email_count) - 1:
-            print(f" '{email}': {count}, ")
-        else:
-            print(f" '{email}': {count}")
-    print("}")
+            if words[1] not in email_count:
+                email_count[words[1]] = 1
+            else:
+                email_count[words[1]] += 1
+    print(email_count)
 
-# Menjalankan Latihan 11.3
-Latihan3(file)
+Latihan3()
 
 def Latihan4():
     file = input("Masukkan nama file: ")
+    domain_count = {}
     try:
         with open(file) as file:
-            file = file.read()
-            file = file.split()
+            file = (file.read()).splitlines()
     except FileNotFoundError:
-        print(f"File {file} tidak ditemukan")
-        return
-    
-    domain_count = {}
+        return print(f"File {file} tidak ditemukan")
     
     for line in file:
         if line.startswith('From '):
-            # Split the line and get the sender's email
             words = line.split()
             if len(words) >= 2:
                 email = words[1]
-                # Extract domain (part after @)
                 if '@' in email:
                     domain = email.split('@')[1]
-                    # Count domains
-                    domain_count[domain] = domain_count.get(domain, 0) + 1
-    
-    # Format and print dictionary
-    output = "{"
-    for i, (domain, count) in enumerate(domain_count.items()):
-        output += f"'{domain}': {count}"
-        if i < len(domain_count) - 1:
-            output += ", "
-    output += "}"
-    print(output)
+                    if domain not in domain_count:
+                        domain_count[domain] = 1
+                    else:
+                        domain_count[domain] += 1
+    print(domain_count)
 
-# Menjalankan Latihan 11.4
 Latihan4()
 
