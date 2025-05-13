@@ -1,10 +1,10 @@
-def Latihan1():
-    dictionary = {1:10,2:20,3:30,4:40,5:50,6:60}
+dictionary = {1:10,2:20,3:30,4:40,5:50,6:60}
+def Latihan1(x):
     print("key\tvalue\titem")
-    for i,j  in enumerate(dictionary):
-        print(f"{j}\t{dictionary[j]}\t{i+1}")
+    for i,j in dictionary.items():
+        print(f"{i}\t{j}\t{i+1}")
 
-Latihan1()
+Latihan1(dictionary)
 
 list1 = ['red','green','blue']
 list2 = ['#FF0000','#008000','#0000FF']
